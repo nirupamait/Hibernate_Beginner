@@ -1,3 +1,33 @@
 
 session.get(EntityType,id);
 session.load(EntityType,id);
+
+get()
+-->get method of hibernate returns null if object is not found in database as well as in cache
+-->load method throws ObjectNotFoundException if object not found in cache as well as in db but never returns null.
+
+-->get::Use if you are not sure that object exist in db or not.
+load::Use if you sure that object exists
+
+-->get::get() involves db call if value does not exist in cache and may invoke many db calls.
+load::Return proxy in place and only initialize the object or hit the db if any method other than getId() is called on persistent
+or entity object.This lazy initialization increases the performance.
+
+Embedding Objects::
+@Embeddable annotation:: Used for a class, so that its fields/propertirs can be used inside another class.
+If we want to embed field of class in another entity class table as additional fields.
+
+Hiobernate OneToMany Relationship::
+
+In bidirectional one-many and many to one like Question has many answers and Answer belongs to many question.
+Question ::
+@OneToMany(mappedby="Question)
+List<Answers> ans
+
+
+Answers::
+@ManyToOne
+Question ques
+
+
+
