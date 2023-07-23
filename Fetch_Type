@@ -1,0 +1,23 @@
+Two Types of Fetch Types::
+
+1)Lazy::In lazy loading, associated data loads only when we explicitly call getter or size method. 
+
+
+2)Eager::It is design pattern in which data loading occurs on spot.
+
+@OneToMany(mappedBy="Question", fetch=FetchType.Lazy)
+private List<Answer> answers;
+
+
+Hibernate/Persistence lifecycle states::
+
+1)Transient state:: When we create object with values, it goes in transient state. The object is neither in session nor in db.
+
+2)Persistent state:: When we call session.save, then data goes in session as well as in db.
+
+3)Detached state:: When we close/clear session, then data goes in detached state.It is not assocated with session and any change in data
+will not get reflected in db.
+
+4)Removed state:: Data will get deleted from database but will be in session with session.delete.
+
+
